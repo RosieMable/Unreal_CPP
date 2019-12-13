@@ -1,73 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <None Include="..\..\UnrealCPP.uproject" />
+    <None Include="..\..\UnrealAssets.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{48644E95-463F-421E-ABC7-97EAE0E8A543}</UniqueIdentifier>
+      <UniqueIdentifier>{F9337D9B-6B14-4A9D-A020-DC4656158FFD}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UnrealCPP.Target.cs">
       <Filter>Source</Filter>
     </None>
-    <None Include="..\..\Source\UnrealCPPEditor.Target.cs">
-      <Filter>Source</Filter>
-    </None>
-    <Filter Include="Config">
-      <UniqueIdentifier>{BCB27F3A-3ACC-4BF0-A964-368D1B79F75D}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Config\DefaultEditor.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultEngine.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultGame.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultInput.ini">
-      <Filter>Config</Filter>
-    </None>
-    <Filter Include="Source\UnrealCPP">
-      <UniqueIdentifier>{49B71D65-6151-4D17-BB25-0466B08C1828}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Source\UnrealCPP\UnrealCPP.Build.cs">
-      <Filter>Source\UnrealCPP</Filter>
-    </None>
-    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPP.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPP.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\UnrealCPP\AActionActor.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\UnrealCPP\ActionTrigger.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\UnrealCPP\AActionActor.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\UnrealCPP\ActionTrigger.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

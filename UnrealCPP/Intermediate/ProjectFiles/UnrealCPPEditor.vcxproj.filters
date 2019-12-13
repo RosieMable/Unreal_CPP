@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\UnrealAssets.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{792C0871-6F3A-4453-AC02-C304002EF7EA}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\UnrealCPPEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+  </ItemGroup>
+</Project>

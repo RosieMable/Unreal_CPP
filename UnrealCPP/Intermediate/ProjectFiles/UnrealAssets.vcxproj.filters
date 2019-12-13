@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\UnrealAssets.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{7F6AA759-871C-4609-B32E-40DAD585F554}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\UnrealAssets.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\UnrealAssetsEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{A1B24655-C60E-4CFC-9B6B-3679570C0FF8}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\UnrealCPP">
+      <UniqueIdentifier>{250A4690-8377-4EF3-B568-0061F5778CAA}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UnrealCPP\AActionActor.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\AActionActor.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealCPP\ActionTrigger.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\ActionTrigger.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\UnrealCPP\UnrealCPP.Build.cs">
+      <Filter>Source\UnrealCPP</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPP.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPP.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <Filter Include="Source\UnrealAssets">
+      <UniqueIdentifier>{7CA91C23-85C0-4ECF-A083-F73EC27609B1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UnrealAssets\ActionTrigger.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\ActionTrigger.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\AnimalController.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\AnimalController.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\DialogueLinesStruct.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\DialogueLinesStruct.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\DialogueNPCCharacter.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\DialogueNPCCharacter.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\DialogueStruct.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\DialogueStruct.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\DialogUI.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\DialogUI.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\FlyingPawn.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\FlyingPawn.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\TryGameMode.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\TryGameMode.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\UnrealAssets\UnrealAssets.Build.cs">
+      <Filter>Source\UnrealAssets</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\UnrealAssets\UnrealAssets.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\UnrealAssets.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\UnrealAssetsGameMode.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\UnrealAssetsGameMode.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\UnrealAssets\ActionActor.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\UnrealAssets\ActionActor.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
