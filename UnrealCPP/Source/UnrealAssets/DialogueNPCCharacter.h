@@ -40,7 +40,7 @@ private:
 		UFUNCTION()
 		void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 		UFUNCTION()
-			void Talk(TArray<FDialogueLines> DialogueLines);
+			void Talk(USoundBase* SFX, TArray<FDialogueLines> DialogueLines);
 
 public:
 	//Answers to the character after a specified delay

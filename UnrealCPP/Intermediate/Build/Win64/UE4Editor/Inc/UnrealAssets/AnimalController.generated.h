@@ -8,14 +8,41 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FDialogueLines;
 #ifdef UNREALASSETS_AnimalController_generated_h
 #error "AnimalController.generated.h already included, missing '#pragma once' in AnimalController.h"
 #endif
 #define UNREALASSETS_AnimalController_generated_h
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_RPC_WRAPPERS
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_INCLASS_NO_PURE_DECLS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execTalk) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_Excerpt); \
+		P_GET_TARRAY_REF(FDialogueLines,Z_Param_Out_Lines); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->Talk(Z_Param_Excerpt,Z_Param_Out_Lines); \
+		P_NATIVE_END; \
+	}
+
+
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execTalk) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_Excerpt); \
+		P_GET_TARRAY_REF(FDialogueLines,Z_Param_Out_Lines); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->Talk(Z_Param_Excerpt,Z_Param_Out_Lines); \
+		P_NATIVE_END; \
+	}
+
+
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_EVENT_PARMS
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_CALLBACK_WRAPPERS
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAAnimalController(); \
 	friend struct Z_Construct_UClass_AAnimalController_Statics; \
@@ -24,7 +51,7 @@ public: \
 	DECLARE_SERIALIZER(AAnimalController)
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_INCLASS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAAnimalController(); \
 	friend struct Z_Construct_UClass_AAnimalController_Statics; \
@@ -33,7 +60,7 @@ public: \
 	DECLARE_SERIALIZER(AAnimalController)
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_STANDARD_CONSTRUCTORS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AAnimalController(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAnimalController) \
@@ -46,7 +73,7 @@ private: \
 public:
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_ENHANCED_CONSTRUCTORS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AAnimalController(AAnimalController&&); \
@@ -57,30 +84,37 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAnimalController); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AAnimalController)
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_PRIVATE_PROPERTY_OFFSET \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AAnimalController, CameraBoom); } \
-	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(AAnimalController, FollowCamera); }
+	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(AAnimalController, FollowCamera); } \
+	FORCEINLINE static uint32 __PPO__AudioComp() { return STRUCT_OFFSET(AAnimalController, AudioComp); } \
+	FORCEINLINE static uint32 __PPO__UI() { return STRUCT_OFFSET(AAnimalController, UI); }
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_9_PROLOG
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_GENERATED_BODY_LEGACY \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_11_PROLOG \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_EVENT_PARMS
+
+
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_PRIVATE_PROPERTY_OFFSET \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_RPC_WRAPPERS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_INCLASS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_STANDARD_CONSTRUCTORS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_PRIVATE_PROPERTY_OFFSET \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_RPC_WRAPPERS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_CALLBACK_WRAPPERS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_INCLASS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_12_GENERATED_BODY \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_PRIVATE_PROPERTY_OFFSET \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_INCLASS_NO_PURE_DECLS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_12_ENHANCED_CONSTRUCTORS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_PRIVATE_PROPERTY_OFFSET \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_CALLBACK_WRAPPERS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_INCLASS_NO_PURE_DECLS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeDialogueStruct() {}
 	UPackage* Z_Construct_UPackage__Script_UnrealAssets();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTableRowBase();
 	UNREALASSETS_API UScriptStruct* Z_Construct_UScriptStruct_FDialogueLines();
+	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 // End Cross Module References
 class UScriptStruct* FDialogue::StaticStruct()
 {
@@ -56,6 +57,10 @@ static struct FScriptStruct_UnrealAssets_StaticRegisterNativesFDialogue
 #endif
 		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_DialogueLines;
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_DialogueLines_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SFX_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SFX;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Question_MetaData[];
 #endif
@@ -97,6 +102,15 @@ static struct FScriptStruct_UnrealAssets_StaticRegisterNativesFDialogue
 	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_DialogueLines = { "DialogueLines", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FDialogue, DialogueLines), METADATA_PARAMS(Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_DialogueLines_MetaData, ARRAY_COUNT(Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_DialogueLines_MetaData)) };
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_DialogueLines_Inner = { "DialogueLines", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FDialogueLines, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_SFX_MetaData[] = {
+		{ "Category", "Dialogue" },
+		{ "Comment", "//Sounds that is going to when asking the question (adds flavour to the dialogue system OR it could be used for voice lines)\n" },
+		{ "ModuleRelativePath", "DialogueStruct.h" },
+		{ "ToolTip", "Sounds that is going to when asking the question (adds flavour to the dialogue system OR it could be used for voice lines)" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_SFX = { "SFX", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FDialogue, SFX), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_SFX_MetaData, ARRAY_COUNT(Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_SFX_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_Question_MetaData[] = {
 		{ "Category", "Dialogue" },
 		{ "Comment", "//Question that will appear on the screen (makes the dialogue system more interactable\n" },
@@ -109,6 +123,7 @@ static struct FScriptStruct_UnrealAssets_StaticRegisterNativesFDialogue
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_ShouldAIAnswer,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_DialogueLines,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_DialogueLines_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_SFX,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FDialogue_Statics::NewProp_Question,
 	};
 	const UE4CodeGen_Private::FStructParams Z_Construct_UScriptStruct_FDialogue_Statics::ReturnStructParams = {
@@ -139,7 +154,7 @@ static struct FScriptStruct_UnrealAssets_StaticRegisterNativesFDialogue
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FDialogue_Hash() { return 3503190203U; }
+	uint32 Get_Z_Construct_UScriptStruct_FDialogue_Hash() { return 995282265U; }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 #ifdef _MSC_VER
 #pragma warning (pop)

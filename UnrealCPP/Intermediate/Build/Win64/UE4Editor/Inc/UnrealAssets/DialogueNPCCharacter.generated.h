@@ -8,6 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class USoundBase;
 struct FDialogueLines;
 class UPrimitiveComponent;
 class AActor;
@@ -21,10 +22,11 @@ struct FHitResult;
  \
 	DECLARE_FUNCTION(execTalk) \
 	{ \
+		P_GET_OBJECT(USoundBase,Z_Param_SFX); \
 		P_GET_TARRAY(FDialogueLines,Z_Param_DialogueLines); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->Talk(Z_Param_DialogueLines); \
+		P_THIS->Talk(Z_Param_SFX,Z_Param_DialogueLines); \
 		P_NATIVE_END; \
 	} \
  \
@@ -59,10 +61,11 @@ struct FHitResult;
  \
 	DECLARE_FUNCTION(execTalk) \
 	{ \
+		P_GET_OBJECT(USoundBase,Z_Param_SFX); \
 		P_GET_TARRAY(FDialogueLines,Z_Param_DialogueLines); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->Talk(Z_Param_DialogueLines); \
+		P_THIS->Talk(Z_Param_SFX,Z_Param_DialogueLines); \
 		P_NATIVE_END; \
 	} \
  \

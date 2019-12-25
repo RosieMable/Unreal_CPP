@@ -24,6 +24,7 @@ void EmptyLinkFunctionForGeneratedCodeDialogueNPCCharacter() {}
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_ADialogueNPCCharacter_OnOverlapEnd();
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_ADialogueNPCCharacter_Talk();
 	UNREALASSETS_API UScriptStruct* Z_Construct_UScriptStruct_FDialogueLines();
+	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UDataTable_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UAudioComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
@@ -183,10 +184,12 @@ void EmptyLinkFunctionForGeneratedCodeDialogueNPCCharacter() {}
 	{
 		struct DialogueNPCCharacter_eventTalk_Parms
 		{
+			USoundBase* SFX;
 			TArray<FDialogueLines> DialogueLines;
 		};
 		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_DialogueLines;
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_DialogueLines_Inner;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SFX;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
@@ -195,9 +198,11 @@ void EmptyLinkFunctionForGeneratedCodeDialogueNPCCharacter() {}
 	};
 	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::NewProp_DialogueLines = { "DialogueLines", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(DialogueNPCCharacter_eventTalk_Parms, DialogueLines), METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::NewProp_DialogueLines_Inner = { "DialogueLines", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FDialogueLines, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::NewProp_SFX = { "SFX", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(DialogueNPCCharacter_eventTalk_Parms, SFX), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::NewProp_DialogueLines,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::NewProp_DialogueLines_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::NewProp_SFX,
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ADialogueNPCCharacter_Talk_Statics::Function_MetaDataParams[] = {
@@ -252,7 +257,7 @@ void EmptyLinkFunctionForGeneratedCodeDialogueNPCCharacter() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_ADialogueNPCCharacter_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_ADialogueNPCCharacter_OnOverlapBegin, "OnOverlapBegin" }, // 2143957240
 		{ &Z_Construct_UFunction_ADialogueNPCCharacter_OnOverlapEnd, "OnOverlapEnd" }, // 733672853
-		{ &Z_Construct_UFunction_ADialogueNPCCharacter_Talk, "Talk" }, // 3703331528
+		{ &Z_Construct_UFunction_ADialogueNPCCharacter_Talk, "Talk" }, // 2146835631
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ADialogueNPCCharacter_Statics::Class_MetaDataParams[] = {
@@ -332,7 +337,7 @@ void EmptyLinkFunctionForGeneratedCodeDialogueNPCCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ADialogueNPCCharacter, 1507039619);
+	IMPLEMENT_CLASS(ADialogueNPCCharacter, 1033390666);
 	template<> UNREALASSETS_API UClass* StaticClass<ADialogueNPCCharacter>()
 	{
 		return ADialogueNPCCharacter::StaticClass();

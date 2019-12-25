@@ -18,8 +18,8 @@ struct FDialogue : public FTableRowBase
 		FString Question;
 
 	//Sounds that is going to when asking the question (adds flavour to the dialogue system OR it could be used for voice lines)
-	//UPROPERTY(EditAnywhere)
-	//USoundBase* SFX;
+	UPROPERTY(EditAnywhere)
+	USoundBase* SFX;
 
 	//An array of associated dialogue lines
 	UPROPERTY(EditAnywhere)

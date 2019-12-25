@@ -1,5 +1,7 @@
 // Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
 
+//Modiefied version of the Third Person Character Controller CPP by Unreal Engine, to accomodate the needs of the game
+
 #include "AnimalController.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Camera/CameraComponent.h"
@@ -45,6 +47,19 @@ AAnimalController::AAnimalController()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+
+#pragma region DialogueSystem
+
+	bIsTalking = false;
+	bIsTalkingRange = false;
+	TalkingPawn = nullptr;
+
+	AudioComp = CreateDefaultSubobject<UAudioComponent>(FName("Audio Component"));
+	AudioComp->AttachTo(GetRootComponent());
+
+#pragma endregion
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -74,6 +89,108 @@ void AAnimalController::SetupPlayerInputComponent(class UInputComponent* PlayerI
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AAnimalController::OnResetVR);
+
+	//Talk Input Binding
+	PlayerInputComponent->BindAction("Talk", IE_Pressed, this, &AAnimalController::ToggleTalking);
+}
+
+void AAnimalController::ToggleTalking()
+{
+	if (bIsTalkingRange) {
+
+		//if we are in talking range, then we handle the talk status and the UI
+		bIsTalking = !bIsTalking;
+		ToggleUI();
+
+		if (bIsTalking && TalkingPawn) {
+
+			//The talking pawn rotates to face the player
+			FVector Location = TalkingPawn->GetActorLocation();
+			FVector TargetLocation = GetActorLocation();
+
+			TalkingPawn->SetActorRotation((TargetLocation - Location).Rotation());
+		}
+	}
+
+}
+
+FDialogue* AAnimalController::RetrieveDialogue(UDataTable* TableToSearch, FName RowName)
+{
+	//If the table is not valid...
+	if(!TableToSearch) return nullptr;
+
+	//If the table is valid, then retrieve the fiven row if possible
+	FString ContextString;
+	return TableToSearch->FindRow<FDialogue>(RowName, ContextString);
+}
+
+void AAnimalController::GeneratePlayerLines(UDataTable& PlayerLines)
+{
+	//Get all the row names of the table
+	TArray<FName> PlayerOptions = PlayerLines.GetRowNames();
+
+	//For each row name try to retrieve the contents of the table
+	for (auto It : PlayerOptions) {
+
+		//retrieve the contents of the table
+		FDialogue* Dialogue = RetrieveDialogue(&PlayerLines, It);
+
+		if (Dialogue) {
+
+			//we retrieved a valid row, so populate the questions array
+			Questions.Add(Dialogue->Question);
+		}
+
+		//Make sure to create a reference of the available line for later use
+		DialogueLines = &PlayerLines;
+	}
+
+}
+
+void AAnimalController::Talk(FString Excerpt, TArray<FDialogueLines>& Lines)
+{
+
+	//Get all the row names based on the stored lines
+	TArray<FName> PlayerOptions = DialogueLines->GetRowNames();
+
+	//Search inside the available lines table to find the pressed Excerpt from the UI
+	for (auto It : PlayerOptions) {
+		FDialogue* ChosenDialogue = RetrieveDialogue(DialogueLines, It);
+
+		if (ChosenDialogue && ChosenDialogue->Question == Excerpt)
+		{
+			//We found the pressed excerpt / assign the sfx to the audio component and play it
+			AudioComp->SetSound(ChosenDialogue->SFX);
+			AudioComp->Play();
+
+			//Update the corresponding lines
+			Lines = ChosenDialogue->DialogueLines;
+
+			if (UI && TalkingPawn && ChosenDialogue->ShouldAIAnswer) {
+
+				//Calculate the total displayed time for our subtitles
+				//When the subtitles end - the associated pawn will be able to talk to our charac
+
+				TArray<FDialogueLines> LinesToDisplay;
+
+				float ToTalLinesTime = 0.f;
+
+				for (int32 i = 0; i < LinesToDisplay.Num(); i++)
+				{
+					ToTalLinesTime += LinesToDisplay[i].DisplayTime;
+				}
+
+				//Just a hardcoded value in order for the AI not to answer right after our lines.
+				ToTalLinesTime += 1.f;
+
+				//Tell the talking pawn to reply to our player after the specified time
+				TalkingPawn->AnswerWithDelay(It, LinesToDisplay, ToTalLinesTime);
+			}
+			else if (!ChosenDialogue->ShouldAIAnswer) ToggleTalking();
+			break;
+		}
+	}
+
 }
 
 
@@ -106,7 +223,8 @@ void AAnimalController::LookUpAtRate(float Rate)
 
 void AAnimalController::MoveForward(float Value)
 {
-	if ((Controller != NULL) && (Value != 0.0f))
+	//modified my MoveRight and MoveForward functions in order to disable the player movement if he’s talking
+	if ((Controller != NULL) && (Value != 0.0f) && !bIsTalking)
 	{
 		// find out which way is forward
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -120,7 +238,8 @@ void AAnimalController::MoveForward(float Value)
 
 void AAnimalController::MoveRight(float Value)
 {
-	if ( (Controller != NULL) && (Value != 0.0f) )
+	//modified my MoveRight and MoveForward functions in order to disable the player movement if he’s talking
+	if ( (Controller != NULL) && (Value != 0.0f) && !bIsTalking)
 	{
 		// find out which way is right
 		const FRotator Rotation = Controller->GetControlRotation();

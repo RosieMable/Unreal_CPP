@@ -1,5 +1,5 @@
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\Definitions.UnrealAssets.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\Definitions.UnrealAssets.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealAssets/FlyingPawn.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Inc\UnrealAssets\FlyingPawn.generated.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealAssets/FlyingPawn.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Inc\UnrealAssets\FlyingPawn.generated.h

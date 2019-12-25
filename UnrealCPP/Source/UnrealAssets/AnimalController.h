@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "DialogUI.h"
+#include "DialogueNPCCharacter.h"
 #include "AnimalController.generated.h"
 
 UCLASS(config=Game)
@@ -11,23 +13,23 @@ class AAnimalController : public ACharacter
 {
 	GENERATED_BODY()
 
-	/** Camera boom positioning the camera behind the character */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	class USpringArmComponent* CameraBoom;
+		/** Camera boom positioning the camera behind the character */
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+		class USpringArmComponent* CameraBoom;
 
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* FollowCamera;
+		class UCameraComponent* FollowCamera;
 public:
 	AAnimalController();
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-	float BaseTurnRate;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+		float BaseTurnRate;
 
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-	float BaseLookUpRate;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+		float BaseLookUpRate;
 
 protected:
 
@@ -40,14 +42,14 @@ protected:
 	/** Called for side to side input */
 	void MoveRight(float Value);
 
-	/** 
-	 * Called via input to turn at a given rate. 
+	/**
+	 * Called via input to turn at a given rate.
 	 * @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
 	 */
 	void TurnAtRate(float Rate);
 
 	/**
-	 * Called via input to turn look up/down at a given rate. 
+	 * Called via input to turn look up/down at a given rate.
 	 * @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
 	 */
 	void LookUpAtRate(float Rate);
@@ -68,5 +70,64 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	//The following code has been added to expand the functionalities of the third person character controller and make it compatible with the dialogue system
+private:
+
+	//True if the player is currently talking with any pawn
+	bool bIsTalking;
+
+	//True if the player is within a valide range to talk with a pawn
+	bool bIsTalkingRange;
+
+	//Initiate or terminates a conversation
+	void ToggleTalking();
+
+	//Reference to the datatable containing the lines, it is retreived by the pawn
+	UDataTable* DialogueLines;
+
+	//Reference to the pawn the player is currently talking to
+	ADialogueNPCCharacter* TalkingPawn;
+
+	//Serches in the given row inside a specified udatatable
+	FDialogue* RetrieveDialogue(UDataTable* TableToSearch, FName RowName);
+
+public:
+
+	//Generates player's lines
+	void GeneratePlayerLines(UDataTable& PlayerLines);
+
+	//Array that will be populated with the Questions from the Dialogue class' questions, retrieved from the actor talking
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FString> Questions;
+
+	/*Performs the actual talking - informs the associated pawn if necessary in order to answer
+	The subtitles array contain all the subtitles for this talk - it should be passed to our UI*/
+	UFUNCTION(BlueprintCallable, Category = DialogueSystem)
+		void Talk(FString Excerpt, TArray<FDialogueLines>& Lines);
+
+	//Enables/Disables our ability to talk. The player cant talk if he is not in a valid range
+	void SetTalkRangeStatus(bool Status) { bIsTalkingRange = Status; }
+
+	//Set a new talking pawn
+	void SetTalkingPawn(ADialogueNPCCharacter* Pawn) { TalkingPawn = Pawn; }
+
+	/*Retrieves the UI reference*/
+	UDialogUI* GetUI() { return UI; }
+
+protected:
+
+		/*The component responsible for playing our SFX*/
+		UPROPERTY(VisibleAnywhere)
+			UAudioComponent* AudioComp;
+
+		/*Opens or closes the conversation UI*/
+		UFUNCTION(BlueprintImplementableEvent, Category = DialogSystem)
+			void ToggleUI();
+
+		/*UI Reference*/
+		UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+			UDialogUI* UI;
+
 };
 

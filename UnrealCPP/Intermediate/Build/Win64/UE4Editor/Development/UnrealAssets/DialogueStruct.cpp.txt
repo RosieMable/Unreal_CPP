@@ -1,12 +1,12 @@
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\Definitions.UnrealAssets.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealAssets\DialogueStruct.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\Definitions.UnrealAssets.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealAssets\DialogueStruct.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\CoreUObject\Public\UObject/NoExportTypes.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\Core\Public\Math/UnitConversion.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\Core\Public\Math/UnitConversion.inl
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\Core\Public\Internationalization/PolyglotTextData.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealAssets\DialogueLinesStruct.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealAssets\DialogueLinesStruct.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\Engine\Classes\Engine/DataTable.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Source\Runtime\Engine\Public\DataTableUtils.h
 C:\Program Files\Epic Games\UE_4.23\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DataTable.generated.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Inc\UnrealAssets\DialogueLinesStruct.generated.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Inc\UnrealAssets\DialogueStruct.generated.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Inc\UnrealAssets\DialogueLinesStruct.generated.h
+D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Inc\UnrealAssets\DialogueStruct.generated.h

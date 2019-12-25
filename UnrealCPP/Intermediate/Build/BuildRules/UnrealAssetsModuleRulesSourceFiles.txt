@@ -1,4 +1,4 @@
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealCPP\UnrealCPP.Build.cs
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealAssets\UnrealAssets.Build.cs
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealAssets.Target.cs
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealAssetsEditor.Target.cs
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealAssets\UnrealAssets.Build.cs
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealCPP\UnrealCPP.Build.cs
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealAssets.Target.cs
+D:\GitHub\Unreal_CPP\UnrealCPP\Source\UnrealAssetsEditor.Target.cs

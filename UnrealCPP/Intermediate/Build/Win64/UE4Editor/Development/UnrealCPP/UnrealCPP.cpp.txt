@@ -1,2 +1,0 @@
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealCPP\Definitions.UnrealCPP.h
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealCPP\UnrealCPP.h

@@ -1,3 +1,0 @@
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealCPP\UnrealCPP.Build.cs
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealCPP.Target.cs
-D:\Github\UnrealCPP\Unreal_CPP\UnrealCPP\Source\UnrealCPPEditor.Target.cs

@@ -1,0 +1,56 @@
+struct RMstruct
+{
+	float RMSphere(float3 pos)
+	{
+		return length(pos) - 50; //Object Pos used as an offset, so that the raymarching effect moves with the actor pos
+	}
+	
+	float3 RMNormal(float3 pos)
+	{
+		float2 Offset = float2(0.01, 0); //Offset into world position
+		return normalize(float3(
+		RMSphere(pos + Offset.xyy) - RMSphere(pos - Offset.xyy),
+		RMSphere(pos + Offset.yxy) - RMSphere(pos - Offset.yxy),
+		RMSphere(pos + Offset.yyx) - RMSphere(pos - Offset.yyx)
+		)); //Calculating normals for lighting purposes
+		//http://iquilezles.org/www/articles/normalsSDF/normalsSDF.htm
+	}
+	
+	//By Inigo Quilez, smoothUnion http://iquilezles.org/www/articles/smin/smin.htm
+	float opSmoothUnion( float d1, float d2, float k ) 
+	{
+		float h = clamp( 0.5 + 0.5*(d2-d1)/k, 0.0, 1.0 );
+		return lerp( d2, d1, h ) - k*h*(1.0-h); 
+	}
+};
+
+RMstruct RM;
+float4 Col = 0; //Colour Value
+float3 pos = WorldPos; //Position where the raymarching is starting
+float3 Normal = 0; //Normal for when the obj is touchin something
+
+for(int i=0; i<MaxSteps; i++)
+{
+	if(SceneDepth < length(pos - CameraPos))
+	break;
+	
+	float d1 = RM.RMSphere(pos - ObjPos);
+	//Distance 2 is going to be based on the depth buffer, to "fake" the depth buffer, we can calculate the distance between a pixel and the one behind
+	float d2 = SceneDepth - length(pos - CameraPos); //Calc based on Scene Depth (screen space based)
+	//float d2 = GetDistanceToNearestSurfaceGlobal(pos); //Calc based on Global distanceField view Distance 
+	
+	float distance =RM.opSmoothUnion(d1, d2, Smooth);
+	
+	//If ray touches something
+	if(distance < RMStop)
+	{
+		Col = 1;
+		Normal = RM.RMNormal(pos - ObjPos);
+		break;
+	}
+	
+
+	pos += CameraVector * 1; 
+}
+
+return float4(Normal, Col.a);
