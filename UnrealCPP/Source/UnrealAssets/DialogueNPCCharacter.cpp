@@ -72,9 +72,12 @@ void ADialogueNPCCharacter::Talk(USoundBase* SFX, TArray<FDialogueLines> Dialogu
 {
 	AAnimalController* Char = Cast<AAnimalController>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
-	//Play the corresponding sfx
-	AudioComp->SetSound(SFX);
-	AudioComp->Play();
+	if (SFX != nullptr) {
+		//Play the corresponding sfx
+		AudioComp->SetSound(SFX);
+		AudioComp->Play();
+	}
+
 
 	//Tell the ui to update with the new dialog lines
 	Char->GetUI()->UpdateSubtitles(DialogueLines);

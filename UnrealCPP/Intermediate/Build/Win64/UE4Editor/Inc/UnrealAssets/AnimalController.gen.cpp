@@ -13,18 +13,144 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 // Cross Module References
+	UNREALASSETS_API UEnum* Z_Construct_UEnum_UnrealAssets_ELogOutput();
+	UPackage* Z_Construct_UPackage__Script_UnrealAssets();
+	UNREALASSETS_API UEnum* Z_Construct_UEnum_UnrealAssets_ELogLevel();
 	UNREALASSETS_API UClass* Z_Construct_UClass_AAnimalController_NoRegister();
 	UNREALASSETS_API UClass* Z_Construct_UClass_AAnimalController();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
-	UPackage* Z_Construct_UPackage__Script_UnrealAssets();
+	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_Possess();
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_Talk();
 	UNREALASSETS_API UScriptStruct* Z_Construct_UScriptStruct_FDialogueLines();
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_ToggleUI();
 	UNREALASSETS_API UClass* Z_Construct_UClass_UDialogUI_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UAudioComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 // End Cross Module References
+	static UEnum* ELogOutput_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_UnrealAssets_ELogOutput, Z_Construct_UPackage__Script_UnrealAssets(), TEXT("ELogOutput"));
+		}
+		return Singleton;
+	}
+	template<> UNREALASSETS_API UEnum* StaticEnum<ELogOutput>()
+	{
+		return ELogOutput_StaticEnum();
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ELogOutput(ELogOutput_StaticEnum, TEXT("/Script/UnrealAssets"), TEXT("ELogOutput"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_UnrealAssets_ELogOutput_Hash() { return 8559065U; }
+	UEnum* Z_Construct_UEnum_UnrealAssets_ELogOutput()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_UnrealAssets();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("ELogOutput"), 0, Get_Z_Construct_UEnum_UnrealAssets_ELogOutput_Hash(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "ELogOutput::ALL", (int64)ELogOutput::ALL },
+				{ "ELogOutput::OUTPUT_LOG", (int64)ELogOutput::OUTPUT_LOG },
+				{ "ELogOutput::SCREEN", (int64)ELogOutput::SCREEN },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "ALL.DisplayName", "All levels" },
+				{ "ALL.Name", "ELogOutput::ALL" },
+				{ "BlueprintType", "true" },
+				{ "ModuleRelativePath", "AnimalController.h" },
+				{ "OUTPUT_LOG.DisplayName", "Output log" },
+				{ "OUTPUT_LOG.Name", "ELogOutput::OUTPUT_LOG" },
+				{ "SCREEN.DisplayName", "Screen" },
+				{ "SCREEN.Name", "ELogOutput::SCREEN" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_UnrealAssets,
+				nullptr,
+				"ELogOutput",
+				"ELogOutput",
+				Enumerators,
+				ARRAY_COUNT(Enumerators),
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				(uint8)UEnum::ECppForm::EnumClass,
+				METADATA_PARAMS(Enum_MetaDataParams, ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
+	static UEnum* ELogLevel_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_UnrealAssets_ELogLevel, Z_Construct_UPackage__Script_UnrealAssets(), TEXT("ELogLevel"));
+		}
+		return Singleton;
+	}
+	template<> UNREALASSETS_API UEnum* StaticEnum<ELogLevel>()
+	{
+		return ELogLevel_StaticEnum();
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ELogLevel(ELogLevel_StaticEnum, TEXT("/Script/UnrealAssets"), TEXT("ELogLevel"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_UnrealAssets_ELogLevel_Hash() { return 1377589390U; }
+	UEnum* Z_Construct_UEnum_UnrealAssets_ELogLevel()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_UnrealAssets();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("ELogLevel"), 0, Get_Z_Construct_UEnum_UnrealAssets_ELogLevel_Hash(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "ELogLevel::TRACE", (int64)ELogLevel::TRACE },
+				{ "ELogLevel::DEBUG", (int64)ELogLevel::DEBUG },
+				{ "ELogLevel::INFO", (int64)ELogLevel::INFO },
+				{ "ELogLevel::WARNING", (int64)ELogLevel::WARNING },
+				{ "ELogLevel::ERROR", (int64)ELogLevel::ERROR },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "BlueprintType", "true" },
+				{ "DEBUG.DisplayName", "Debug" },
+				{ "DEBUG.Name", "ELogLevel::DEBUG" },
+				{ "ERROR.DisplayName", "Error" },
+				{ "ERROR.Name", "ELogLevel::ERROR" },
+				{ "INFO.DisplayName", "Info" },
+				{ "INFO.Name", "ELogLevel::INFO" },
+				{ "ModuleRelativePath", "AnimalController.h" },
+				{ "TRACE.DisplayName", "Trace" },
+				{ "TRACE.Name", "ELogLevel::TRACE" },
+				{ "WARNING.DisplayName", "Warning" },
+				{ "WARNING.Name", "ELogLevel::WARNING" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_UnrealAssets,
+				nullptr,
+				"ELogLevel",
+				"ELogLevel",
+				Enumerators,
+				ARRAY_COUNT(Enumerators),
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				(uint8)UEnum::ECppForm::EnumClass,
+				METADATA_PARAMS(Enum_MetaDataParams, ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
 	static FName NAME_AAnimalController_ToggleUI = FName(TEXT("ToggleUI"));
 	void AAnimalController::ToggleUI()
 	{
@@ -34,9 +160,32 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 	{
 		UClass* Class = AAnimalController::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "Possess", &AAnimalController::execPossess },
 			{ "Talk", &AAnimalController::execTalk },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AAnimalController_Possess_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAnimalController_Possess_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "AnimalController.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AAnimalController_Possess_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AAnimalController, nullptr, "Possess", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AAnimalController_Possess_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AAnimalController_Possess_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AAnimalController_Possess()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AAnimalController_Possess_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AAnimalController_Talk_Statics
 	{
@@ -125,6 +274,14 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_AudioComp;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LineTraceSpread_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_LineTraceSpread;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LineTraceDistance_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_LineTraceDistance;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Questions_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_Questions;
@@ -137,6 +294,22 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BaseTurnRate_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_BaseTurnRate;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PossessMaterialFur_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PossessMaterialFur;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PossessMaterialBody_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PossessMaterialBody;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DefaultMaterialFur_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DefaultMaterialFur;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DefaultMaterialBody_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DefaultMaterialBody;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FollowCamera_MetaData[];
 #endif
@@ -154,6 +327,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_UnrealAssets,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AAnimalController_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AAnimalController_Possess, "Possess" }, // 3439924052
 		{ &Z_Construct_UFunction_AAnimalController_Talk, "Talk" }, // 1079395289
 		{ &Z_Construct_UFunction_AAnimalController_ToggleUI, "ToggleUI" }, // 1258022637
 	};
@@ -185,6 +359,22 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_AudioComp = { "AudioComp", nullptr, (EPropertyFlags)0x00200800000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, AudioComp), Z_Construct_UClass_UAudioComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_AudioComp_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_AudioComp_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceSpread_MetaData[] = {
+		{ "Category", "RayCast" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceSpread = { "LineTraceSpread", nullptr, (EPropertyFlags)0x0010000000010015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, LineTraceSpread), METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceSpread_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceSpread_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance_MetaData[] = {
+		{ "Category", "RayCast" },
+		{ "Comment", "//Used to possess a character\n" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+		{ "ToolTip", "Used to possess a character" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance = { "LineTraceDistance", nullptr, (EPropertyFlags)0x0010000000010015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, LineTraceDistance), METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_Questions_MetaData[] = {
 		{ "Category", "AnimalController" },
 		{ "Comment", "//Array that will be populated with the Questions from the Dialogue class' questions, retrieved from the actor talking\n" },
@@ -213,6 +403,36 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate = { "BaseTurnRate", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, BaseTurnRate), METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur_MetaData[] = {
+		{ "Category", "Possession" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur = { "PossessMaterialFur", nullptr, (EPropertyFlags)0x0040000000010001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, PossessMaterialFur), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialBody_MetaData[] = {
+		{ "Category", "Possession" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialBody = { "PossessMaterialBody", nullptr, (EPropertyFlags)0x0040000000010001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, PossessMaterialBody), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialBody_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialBody_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialFur_MetaData[] = {
+		{ "Category", "Possession" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialFur = { "DefaultMaterialFur", nullptr, (EPropertyFlags)0x0040000000010001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, DefaultMaterialFur), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialFur_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialFur_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialBody_MetaData[] = {
+		{ "Category", "Possession" },
+		{ "Comment", "//Following code is used to change the material on possession\n" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+		{ "ToolTip", "Following code is used to change the material on possession" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialBody = { "DefaultMaterialBody", nullptr, (EPropertyFlags)0x0040000000010001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, DefaultMaterialBody), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialBody_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialBody_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_FollowCamera_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Camera" },
@@ -237,10 +457,16 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AAnimalController_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_UI,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_AudioComp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceSpread,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_Questions,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_Questions_Inner,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseLookUpRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialBody,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialFur,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialBody,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_FollowCamera,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_CameraBoom,
 	};
@@ -271,7 +497,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAnimalController, 1205009069);
+	IMPLEMENT_CLASS(AAnimalController, 3371064927);
 	template<> UNREALASSETS_API UClass* StaticClass<AAnimalController>()
 	{
 		return AAnimalController::StaticClass();

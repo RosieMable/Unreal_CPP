@@ -8,6 +8,23 @@
 #include "DialogueNPCCharacter.h"
 #include "AnimalController.generated.h"
 
+
+UENUM(BlueprintType)
+enum class ELogLevel : uint8 {
+	TRACE			UMETA(DisplayName = "Trace"),
+	DEBUG			UMETA(DisplayName = "Debug"),
+	INFO			UMETA(DisplayName = "Info"),
+	WARNING			UMETA(DisplayName = "Warning"),
+	ERROR			UMETA(DisplayName = "Error")
+};
+
+UENUM(BlueprintType)
+enum class ELogOutput : uint8 {
+	ALL				UMETA(DisplayName = "All levels"),
+	OUTPUT_LOG		UMETA(DisplayName = "Output log"),
+	SCREEN			UMETA(DisplayName = "Screen")
+};
+
 UCLASS(config=Game)
 class AAnimalController : public ACharacter
 {
@@ -20,6 +37,18 @@ class AAnimalController : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* FollowCamera;
+
+	//Following code is used to change the material on possession
+	UPROPERTY(EditDefaultsOnly, Category = Possession)
+		class UMaterialInterface* DefaultMaterialBody;
+	UPROPERTY(EditDefaultsOnly, Category = Possession)
+		class UMaterialInterface* DefaultMaterialFur;
+	UPROPERTY(EditDefaultsOnly, Category = Possession)
+		class UMaterialInterface* PossessMaterialBody;
+	UPROPERTY(EditDefaultsOnly, Category = Possession)
+		class UMaterialInterface* PossessMaterialFur;
+
+
 public:
 	AAnimalController();
 
@@ -65,6 +94,22 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
 
+	//For debug propurses
+
+	/**
+	* Log - prints a message to all the log outputs with a specific color
+	* @param LogLevel {@see ELogLevel} affects color of log
+	* @param FString the message for display
+	*/
+	void Log(ELogLevel LogLevel, FString Message);
+
+	/**
+	* Log - prints a message to all the log outputs with a specific color
+	* @param LogLevel {@see ELogLevel} affects color of log
+	* @param FString the message for display
+	* @param ELogOutput - All, Output Log or Screen
+	*/
+	void LogWithOutput(ELogLevel LogLevel, FString Message, ELogOutput LogOutput);
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
@@ -92,6 +137,9 @@ private:
 	//Serches in the given row inside a specified udatatable
 	FDialogue* RetrieveDialogue(UDataTable* TableToSearch, FName RowName);
 
+	//Stores the controller, so it can be used for the possession system 
+	AController* Controller;
+
 public:
 
 	//Generates player's lines
@@ -114,6 +162,18 @@ public:
 
 	/*Retrieves the UI reference*/
 	UDialogUI* GetUI() { return UI; }
+
+	//Is the pawn currently possessed?
+	bool bIsCurrentlyPossessed;
+
+	UFUNCTION()
+		void Possess(); //Used to possess a character
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = RayCast)
+		float LineTraceDistance;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = RayCast)
+		float LineTraceSpread;
 
 protected:
 

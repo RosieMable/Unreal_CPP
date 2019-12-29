@@ -9,6 +9,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
+#include "Engine.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -59,7 +60,6 @@ AAnimalController::AAnimalController()
 	AudioComp->AttachTo(GetRootComponent());
 
 #pragma endregion
-
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -92,15 +92,27 @@ void AAnimalController::SetupPlayerInputComponent(class UInputComponent* PlayerI
 
 	//Talk Input Binding
 	PlayerInputComponent->BindAction("Talk", IE_Pressed, this, &AAnimalController::ToggleTalking);
+
+	//Possess Input Binding
+	PlayerInputComponent->BindAction("Possess", IE_Pressed, this, &AAnimalController::Possess);
 }
+
 
 void AAnimalController::ToggleTalking()
 {
+	static const FString ScrollingMessage(TEXT("In range of NPC to talk to "));
+
 	if (bIsTalkingRange) {
 
 		//if we are in talking range, then we handle the talk status and the UI
 		bIsTalking = !bIsTalking;
 		ToggleUI();
+
+		if (GEngine)
+		{
+			const int32 myConst = 23;
+			GEngine->AddOnScreenDebugMessage(myConst, 3.f, FColor::Cyan, ScrollingMessage);
+		}
 
 		if (bIsTalking && TalkingPawn) {
 
@@ -159,9 +171,12 @@ void AAnimalController::Talk(FString Excerpt, TArray<FDialogueLines>& Lines)
 
 		if (ChosenDialogue && ChosenDialogue->Question == Excerpt)
 		{
-			//We found the pressed excerpt / assign the sfx to the audio component and play it
-			AudioComp->SetSound(ChosenDialogue->SFX);
-			AudioComp->Play();
+			if (ChosenDialogue->SFX != nullptr) 
+			{
+				//We found the pressed excerpt / assign the sfx to the audio component and play it
+				AudioComp->SetSound(ChosenDialogue->SFX);
+				AudioComp->Play();
+			}
 
 			//Update the corresponding lines
 			Lines = ChosenDialogue->DialogueLines;
@@ -191,6 +206,100 @@ void AAnimalController::Talk(FString Excerpt, TArray<FDialogueLines>& Lines)
 		}
 	}
 
+}
+
+void AAnimalController::Possess()
+{
+	//For start and end of the ray to cast
+	FVector Start;
+	FVector End;
+
+	//Store the Eyes location of the player, as well as the rotation
+	FVector PlayerEyesLoc;
+	FRotator PlayerEyesRot;
+
+	LineTraceDistance = 5.f;
+
+	GetActorEyesViewPoint(PlayerEyesLoc, PlayerEyesRot);
+
+	Start = PlayerEyesLoc;
+	End = PlayerEyesLoc + (PlayerEyesRot.Vector() * LineTraceDistance); //Raycast end = Eyes location + vector from eyes rotation + for how long we want the ray to go 
+
+	FCollisionQueryParams TraceParams(FName(TEXT("RayCast")), true, this);
+
+	FHitResult ResultHit = FHitResult(ForceInit); //Start the ray result as null, so every time we call the function, we dont have a reference to any previous hit obj
+
+	bool bIsHit = GetWorld()->LineTraceSingleByChannel(
+		ResultHit,				//	FHitResult object that will be populated with hit info
+		Start,					//	starting position
+		End,					//	end position
+		ECC_GameTraceChannel3,	//	collision channel
+		TraceParams				//	additional trace settings
+	);
+	//If we hit something and it is not us
+	if (bIsHit && ResultHit.GetActor() != this)
+	{
+		AAnimalController* PossessableCharacter = Cast<AAnimalController>(ResultHit.GetActor());
+
+		//If we can possess the character -> If it is an AnimalController or a child of it
+		if (PossessableCharacter)
+		{
+			if (!PossessableCharacter->bIsCurrentlyPossessed) //If the possessable character is not currently poseessed
+			{
+				//handle possession
+				if (!Controller)
+				{
+					Controller = GetController();
+				}
+
+				//Unpossess first 
+				Controller->UnPossess();
+
+				//Disable current player state management
+
+				//Disable movement mode
+				GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_None);
+
+				//Possess our new actor
+				Controller->Possess(Cast<APawn>(ResultHit.GetActor()));
+
+				//Enable movement back on the possessed actor
+				PossessableCharacter->GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Walking);
+
+				//Set the possession materials
+				if (PossessableCharacter->PossessMaterialBody)
+				{
+					PossessableCharacter->GetMesh()->SetMaterial(0, PossessableCharacter->PossessMaterialBody);
+				}
+
+				if (PossessableCharacter->PossessMaterialFur)
+				{
+					PossessableCharacter->GetMesh()->SetMaterial(1, PossessableCharacter->PossessMaterialFur);
+				}
+
+				// ensure the new player is correctly marked as possesed and can be interacted with
+				PossessableCharacter->bIsCurrentlyPossessed = true;
+			}
+		}
+
+		if (bIsHit)
+		{
+			Log(ELogLevel::WARNING, "We hit something");
+			// start to end, green, will lines always stay on, depth priority, thickness of line
+			DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 5.f, ECC_WorldStatic, 1.f);
+
+			Log(ELogLevel::WARNING, ResultHit.Actor->GetName());
+			Log(ELogLevel::DEBUG, FString::SanitizeFloat(ResultHit.Distance));
+			DrawDebugBox(GetWorld(), ResultHit.ImpactPoint, FVector(2.f, 2.f, 2.f), FColor::Blue, false, 5.f, ECC_WorldStatic, 1.f);
+
+		}
+		else
+		{
+			Log(ELogLevel::WARNING, "Nothing was hit");
+			// start to end, purple, will lines always stay on, depth priority, thickness of line
+			DrawDebugLine(GetWorld(), Start, End, FColor::Purple, false, 5.f, ECC_WorldStatic, 1.f);
+		}
+	}
 }
 
 
@@ -249,5 +358,70 @@ void AAnimalController::MoveRight(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
+	}
+}
+
+void AAnimalController::Log(ELogLevel LogLevel, FString Message)
+{
+	//Prints message to all outputs
+	LogWithOutput(LogLevel, Message, ELogOutput::ALL); 
+}
+
+void AAnimalController::LogWithOutput(ELogLevel LogLevel, FString Message, ELogOutput LogOutput)
+{
+	// only print when screen is selected and the GEngine object is available
+	if ((LogOutput == ELogOutput::ALL || LogOutput == ELogOutput::SCREEN) && GEngine)
+	{
+		// default color
+		FColor LogColor = FColor::Cyan;
+		//color based on the type
+		switch (LogLevel)
+		{
+		case ELogLevel::TRACE:
+			LogColor = FColor::Green;
+			break;
+		case ELogLevel::DEBUG:
+			LogColor = FColor::Cyan;
+			break;
+		case ELogLevel::INFO:
+			LogColor = FColor::White;
+			break;
+		case ELogLevel::WARNING:
+			LogColor = FColor::Yellow;
+			break;
+		case ELogLevel::ERROR:
+			LogColor = FColor::Red;
+			break;
+		default:
+			break;
+		}
+		// print the message and leave it on screen ( 4.5f controls the duration )
+		GEngine->AddOnScreenDebugMessage(-1, 4.5f, LogColor, Message);
+	}
+
+	if (LogOutput == ELogOutput::ALL || LogOutput == ELogOutput::OUTPUT_LOG)
+	{
+		// message type based on error level
+		switch (LogLevel)
+		{
+		case ELogLevel::TRACE:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message);
+			break;
+		case ELogLevel::DEBUG:
+			UE_LOG(LogTemp, Verbose, TEXT("%s"), *Message);
+			break;
+		case ELogLevel::INFO:
+			UE_LOG(LogTemp, Log, TEXT("%s"), *Message);
+			break;
+		case ELogLevel::WARNING:
+			UE_LOG(LogTemp, Warning, TEXT("%s"), *Message);
+			break;
+		case ELogLevel::ERROR:
+			UE_LOG(LogTemp, Error, TEXT("%s"), *Message);
+			break;
+		default:
+			UE_LOG(LogTemp, Log, TEXT("%s"), *Message);
+			break;
+		}
 	}
 }
