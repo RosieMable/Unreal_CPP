@@ -18,7 +18,7 @@
 AAnimalController::AAnimalController()
 {
 	// Set size for collision capsule
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+	GetCapsuleComponent()->InitCapsuleSize(42.f, 50.0f);
 
 	// set our turn rates for input
 	BaseTurnRate = 45.f;
@@ -214,11 +214,9 @@ void AAnimalController::Possess()
 	FVector Start;
 	FVector End;
 
-	//Store the Eyes location of the player, as well as the rotation
+	//Store the Eyes location of the player
 	FVector PlayerEyesLoc;
-	FRotator PlayerEyesRot;
-
-	LineTraceDistance = 5.f;
+	FRotator PlayerEyesRot; //To store player eyes rotation
 
 	GetActorEyesViewPoint(PlayerEyesLoc, PlayerEyesRot);
 
@@ -233,12 +231,37 @@ void AAnimalController::Possess()
 		ResultHit,				//	FHitResult object that will be populated with hit info
 		Start,					//	starting position
 		End,					//	end position
-		ECC_GameTraceChannel3,	//	collision channel
+		ECC_GameTraceChannel1,	//	collision channel
 		TraceParams				//	additional trace settings
 	);
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, LineTraceDistance, ECC_WorldStatic, 1.f);
+
 	//If we hit something and it is not us
 	if (bIsHit && ResultHit.GetActor() != this)
 	{
+		//If the character is not currently possessed, then set the default materials
+		if (ResultHit.GetActor()->IsA(ACharacter::StaticClass()))
+		{
+			// check to see if we are a possessed entity
+			if (bIsCurrentlyPossessed)
+			{
+				bIsCurrentlyPossessed = false;
+
+				if (DefaultMaterialBody)
+				{
+					GetMesh()->SetMaterial(0, DefaultMaterialBody);
+				}
+				if (DefaultMaterialFur)
+				{
+					GetMesh()->SetMaterial(1, DefaultMaterialFur);
+				}
+			}
+
+		}
+
+		DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 20.f, ECC_WorldStatic, 1.f);
+
 		AAnimalController* PossessableCharacter = Cast<AAnimalController>(ResultHit.GetActor());
 
 		//If we can possess the character -> If it is an AnimalController or a child of it
@@ -247,13 +270,13 @@ void AAnimalController::Possess()
 			if (!PossessableCharacter->bIsCurrentlyPossessed) //If the possessable character is not currently poseessed
 			{
 				//handle possession
-				if (!Controller)
+				if (!SavedController)
 				{
-					Controller = GetController();
+					SavedController = GetController();
 				}
 
 				//Unpossess first 
-				Controller->UnPossess();
+				SavedController->UnPossess();
 
 				//Disable current player state management
 
@@ -261,7 +284,7 @@ void AAnimalController::Possess()
 				GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_None);
 
 				//Possess our new actor
-				Controller->Possess(Cast<APawn>(ResultHit.GetActor()));
+				SavedController->Possess(Cast<APawn>(ResultHit.GetActor()));
 
 				//Enable movement back on the possessed actor
 				PossessableCharacter->GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Walking);

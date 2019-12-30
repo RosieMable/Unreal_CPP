@@ -138,7 +138,7 @@ private:
 	FDialogue* RetrieveDialogue(UDataTable* TableToSearch, FName RowName);
 
 	//Stores the controller, so it can be used for the possession system 
-	AController* Controller;
+	AController* SavedController;
 
 public:
 

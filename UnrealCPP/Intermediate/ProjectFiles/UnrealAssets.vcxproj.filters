@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\UnrealAssets.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{CA10D4C1-2323-43A0-BBA5-C2D27F343811}</UniqueIdentifier>
+      <UniqueIdentifier>{F3B20165-6838-40DD-88C6-E072FA6D9BBD}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UnrealAssets.Target.cs">
       <Filter>Source</Filter>
@@ -13,7 +13,7 @@
     </None>
     <None Include="..\..\RMblob.ush" />
     <Filter Include="Config">
-      <UniqueIdentifier>{C97F2D0A-1445-4D72-B533-5ABFD18B5FCF}</UniqueIdentifier>
+      <UniqueIdentifier>{9932D361-600B-4494-A439-D0F645026760}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -31,7 +31,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\UnrealAssets">
-      <UniqueIdentifier>{4E0E058A-532A-4141-9DCE-9296CCE92AAC}</UniqueIdentifier>
+      <UniqueIdentifier>{5CC8DF81-AB0F-4899-918C-981A198BCD34}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealAssets\ActionActor.cpp">
       <Filter>Source\UnrealAssets</Filter>
@@ -103,7 +103,7 @@
       <Filter>Source\UnrealAssets</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealCPP">
-      <UniqueIdentifier>{428498DB-A61E-4E34-BECE-31932159F13F}</UniqueIdentifier>
+      <UniqueIdentifier>{56250152-C226-4F1D-BBA8-10F5A8CF4A13}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealCPP\AActionActor.cpp">
       <Filter>Source\UnrealCPP</Filter>
