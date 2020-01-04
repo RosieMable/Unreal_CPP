@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\UnrealAssets.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{54D78EDA-E7E8-4FB4-B4FE-9DAA02CE7DC9}</UniqueIdentifier>
+      <UniqueIdentifier>{355204D0-6B27-4F6C-8F79-01B6D0A7DF25}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UnrealAssets.Target.cs">
       <Filter>Source</Filter>
@@ -13,7 +13,7 @@
     </None>
     <None Include="..\..\RMblob.ush" />
     <Filter Include="Config">
-      <UniqueIdentifier>{BF4630D9-A7B3-4217-AAF5-1B05CB6EB3A6}</UniqueIdentifier>
+      <UniqueIdentifier>{E250AEB0-AABE-4480-9221-732FA126DC47}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,44 +30,8 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
-    <Filter Include="Source\UnrealCPP">
-      <UniqueIdentifier>{223A9288-8372-4B5E-849C-F03B551E3BCE}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\UnrealCPP\AActionActor.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\AActionActor.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\UnrealCPP\ActionTrigger.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\ActionTrigger.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <None Include="..\..\Source\UnrealCPP\UnrealCPP.Build.cs">
-      <Filter>Source\UnrealCPP</Filter>
-    </None>
-    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPP.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPP.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.cpp">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.h">
-      <Filter>Source\UnrealCPP</Filter>
-    </ClInclude>
     <Filter Include="Source\UnrealAssets">
-      <UniqueIdentifier>{031503C9-309A-4B71-9CCC-064E7E5582CA}</UniqueIdentifier>
+      <UniqueIdentifier>{5F97C752-38B3-4779-851E-3ADFF2EAFB10}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealAssets\ActionActor.cpp">
       <Filter>Source\UnrealAssets</Filter>
@@ -85,6 +49,12 @@
       <Filter>Source\UnrealAssets</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\UnrealAssets\AnimalController.h">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealAssets\AWingedCharacterMovement.cpp">
+      <Filter>Source\UnrealAssets</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealAssets\AWingedCharacterMovement.h">
       <Filter>Source\UnrealAssets</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\UnrealAssets\DialogueLinesStruct.cpp">
@@ -144,15 +114,41 @@
     <ClInclude Include="..\..\Source\UnrealAssets\WingedAnimal.h">
       <Filter>Source\UnrealAssets</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\UnrealAssets\AWingedCharacterMovement.h">
-      <Filter>Source\UnrealAssets</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\UnrealAssets\AWingedCharacterMovement.cpp">
-      <Filter>Source\UnrealAssets</Filter>
+    <Filter Include="Source\UnrealCPP">
+      <UniqueIdentifier>{60984309-7F76-4D23-A33A-91DC5EB9352E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UnrealCPP\AActionActor.cpp">
+      <Filter>Source\UnrealCPP</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\AActionActor.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealCPP\ActionTrigger.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\ActionTrigger.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\UnrealCPP\UnrealCPP.Build.cs">
+      <Filter>Source\UnrealCPP</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPP.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPP.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPCharacter.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.cpp">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UnrealCPP\UnrealCPPGameMode.h">
+      <Filter>Source\UnrealCPP</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
