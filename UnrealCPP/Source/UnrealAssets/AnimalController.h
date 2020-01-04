@@ -50,7 +50,9 @@ class AAnimalController : public ACharacter
 
 
 public:
-	AAnimalController();
+
+	/** Default UObject constructor. */
+	AAnimalController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
@@ -117,7 +119,7 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 	//The following code has been added to expand the functionalities of the third person character controller and make it compatible with the dialogue system
-private:
+public:
 
 	//True if the player is currently talking with any pawn
 	bool bIsTalking;

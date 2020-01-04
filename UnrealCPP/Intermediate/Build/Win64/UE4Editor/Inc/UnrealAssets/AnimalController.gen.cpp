@@ -336,6 +336,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "AnimalController.h" },
 		{ "ModuleRelativePath", "AnimalController.h" },
+		{ "ObjectInitializerConstructorDeclared", "" },
 	};
 #endif
 #if WITH_METADATA
@@ -497,7 +498,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAnimalController, 3371064927);
+	IMPLEMENT_CLASS(AAnimalController, 2044016542);
 	template<> UNREALASSETS_API UClass* StaticClass<AAnimalController>()
 	{
 		return AAnimalController::StaticClass();

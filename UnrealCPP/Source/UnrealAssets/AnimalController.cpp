@@ -15,7 +15,8 @@
 //////////////////////////////////////////////////////////////////////////
 // AUnrealAssetsCharacter
 
-AAnimalController::AAnimalController()
+AAnimalController::AAnimalController(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 50.0f);

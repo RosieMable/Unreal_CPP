@@ -18,6 +18,7 @@
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\TryGameMode.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\UnrealAssets.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\UnrealAssetsGameMode.cpp.obj"
+"D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\WingedAnimal.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\ActionActor.gen.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\ActionTrigger.gen.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\AnimalController.gen.cpp.obj"
@@ -29,6 +30,7 @@
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\TryGameMode.gen.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\UnrealAssets.init.gen.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\UnrealAssetsGameMode.gen.cpp.obj"
+"D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\WingedAnimal.gen.cpp.obj"
 "D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\Default.rc2.res"
 /OUT:"D:\GitHub\Unreal_CPP\UnrealCPP\Intermediate\Build\Win64\UE4Editor\Development\UnrealAssets\UE4Editor-UnrealAssets-9279.lib"
 /INCLUDE:IMPLEMENT_MODULE_UnrealAssets

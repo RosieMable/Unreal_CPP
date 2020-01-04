@@ -78,7 +78,7 @@ public: \
 
 #define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AAnimalController(const FObjectInitializer& ObjectInitializer); \
+	NO_API AAnimalController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAnimalController) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AAnimalController); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAnimalController); \
@@ -97,7 +97,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AAnimalController); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAnimalController); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AAnimalController)
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAnimalController)
 
 
 #define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_PRIVATE_PROPERTY_OFFSET \
