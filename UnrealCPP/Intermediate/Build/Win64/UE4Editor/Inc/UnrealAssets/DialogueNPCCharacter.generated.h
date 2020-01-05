@@ -142,7 +142,9 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ADialogueNPCCharacter); \
 	FORCEINLINE static uint32 __PPO__BoxComp() { return STRUCT_OFFSET(ADialogueNPCCharacter, BoxComp); } \
 	FORCEINLINE static uint32 __PPO__AudioComp() { return STRUCT_OFFSET(ADialogueNPCCharacter, AudioComp); } \
 	FORCEINLINE static uint32 __PPO__PlayerLines() { return STRUCT_OFFSET(ADialogueNPCCharacter, PlayerLines); } \
-	FORCEINLINE static uint32 __PPO__AILines() { return STRUCT_OFFSET(ADialogueNPCCharacter, AILines); }
+	FORCEINLINE static uint32 __PPO__AILines() { return STRUCT_OFFSET(ADialogueNPCCharacter, AILines); } \
+	FORCEINLINE static uint32 __PPO__capsuleHeight() { return STRUCT_OFFSET(ADialogueNPCCharacter, capsuleHeight); } \
+	FORCEINLINE static uint32 __PPO__capsuleWidth() { return STRUCT_OFFSET(ADialogueNPCCharacter, capsuleWidth); }
 
 
 #define UnrealCPP_Source_UnrealAssets_DialogueNPCCharacter_h_13_PROLOG

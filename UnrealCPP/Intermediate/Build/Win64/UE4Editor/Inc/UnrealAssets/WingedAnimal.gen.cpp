@@ -236,7 +236,7 @@ void EmptyLinkFunctionForGeneratedCodeWingedAnimal() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AWingedAnimal, 388867292);
+	IMPLEMENT_CLASS(AWingedAnimal, 311125761);
 	template<> UNREALASSETS_API UClass* StaticClass<AWingedAnimal>()
 	{
 		return AWingedAnimal::StaticClass();

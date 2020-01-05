@@ -14,7 +14,15 @@ struct FDialogueLines;
 #endif
 #define UNREALASSETS_AnimalController_generated_h
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_RPC_WRAPPERS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execBeginPlay) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BeginPlay(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execPossess) \
 	{ \
@@ -35,7 +43,15 @@ struct FDialogueLines;
 	}
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_RPC_WRAPPERS_NO_PURE_DECLS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execBeginPlay) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BeginPlay(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execPossess) \
 	{ \
@@ -56,9 +72,9 @@ struct FDialogueLines;
 	}
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_EVENT_PARMS
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_CALLBACK_WRAPPERS
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_INCLASS_NO_PURE_DECLS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_EVENT_PARMS
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_CALLBACK_WRAPPERS
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAAnimalController(); \
 	friend struct Z_Construct_UClass_AAnimalController_Statics; \
@@ -67,7 +83,7 @@ public: \
 	DECLARE_SERIALIZER(AAnimalController)
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_INCLASS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_INCLASS \
 private: \
 	static void StaticRegisterNativesAAnimalController(); \
 	friend struct Z_Construct_UClass_AAnimalController_Statics; \
@@ -76,7 +92,7 @@ public: \
 	DECLARE_SERIALIZER(AAnimalController)
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_STANDARD_CONSTRUCTORS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AAnimalController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAnimalController) \
@@ -89,7 +105,7 @@ private: \
 public:
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_ENHANCED_CONSTRUCTORS \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AAnimalController(AAnimalController&&); \
@@ -100,41 +116,42 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAnimalController); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAnimalController)
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_PRIVATE_PROPERTY_OFFSET \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AAnimalController, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(AAnimalController, FollowCamera); } \
 	FORCEINLINE static uint32 __PPO__DefaultMaterialBody() { return STRUCT_OFFSET(AAnimalController, DefaultMaterialBody); } \
 	FORCEINLINE static uint32 __PPO__DefaultMaterialFur() { return STRUCT_OFFSET(AAnimalController, DefaultMaterialFur); } \
 	FORCEINLINE static uint32 __PPO__PossessMaterialBody() { return STRUCT_OFFSET(AAnimalController, PossessMaterialBody); } \
 	FORCEINLINE static uint32 __PPO__PossessMaterialFur() { return STRUCT_OFFSET(AAnimalController, PossessMaterialFur); } \
+	FORCEINLINE static uint32 __PPO__UnPossessedAnimation() { return STRUCT_OFFSET(AAnimalController, UnPossessedAnimation); } \
 	FORCEINLINE static uint32 __PPO__AudioComp() { return STRUCT_OFFSET(AAnimalController, AudioComp); } \
 	FORCEINLINE static uint32 __PPO__UI() { return STRUCT_OFFSET(AAnimalController, UI); }
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_28_PROLOG \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_EVENT_PARMS
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_29_PROLOG \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_EVENT_PARMS
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_GENERATED_BODY_LEGACY \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_PRIVATE_PROPERTY_OFFSET \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_RPC_WRAPPERS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_CALLBACK_WRAPPERS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_INCLASS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_STANDARD_CONSTRUCTORS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_PRIVATE_PROPERTY_OFFSET \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_RPC_WRAPPERS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_CALLBACK_WRAPPERS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_INCLASS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define UnrealCPP_Source_UnrealAssets_AnimalController_h_31_GENERATED_BODY \
+#define UnrealCPP_Source_UnrealAssets_AnimalController_h_32_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_PRIVATE_PROPERTY_OFFSET \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_RPC_WRAPPERS_NO_PURE_DECLS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_CALLBACK_WRAPPERS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_INCLASS_NO_PURE_DECLS \
-	UnrealCPP_Source_UnrealAssets_AnimalController_h_31_ENHANCED_CONSTRUCTORS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_PRIVATE_PROPERTY_OFFSET \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_RPC_WRAPPERS_NO_PURE_DECLS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_CALLBACK_WRAPPERS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_INCLASS_NO_PURE_DECLS \
+	UnrealCPP_Source_UnrealAssets_AnimalController_h_32_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

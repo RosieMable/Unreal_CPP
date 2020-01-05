@@ -59,7 +59,7 @@ void UAWingedCharacterMovement::PhysFlying(float deltaTime, int32 Iterations)
 		FHitResult Hit(1.f);
 		SafeMoveUpdatedComponent(Adjusted, UpdatedComponent->GetComponentQuat(), true, Hit);
 
-		if (Hit.Time < 1.f)
+		if (Hit.Time < 1000.f)
 		{
 			WingedAnimal->OnImpactDuringFlying(Hit, IsWalkable(Hit));
 

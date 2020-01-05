@@ -8,7 +8,7 @@
 ATryGameMode::ATryGameMode() 
 {
 	// set default pawn class to our Blueprinted character
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPersonCPP/Blueprints/FoxCharacter"));
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPersonCPP/Blueprints/SlimeCharacter"));
 
 	if (PlayerPawnBPClass.Class != NULL)
 	{

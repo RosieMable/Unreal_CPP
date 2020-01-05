@@ -38,11 +38,10 @@ void AWingedAnimal::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	// Check if PlayerInputComponent is valid (not NULL)
 	check(PlayerInputComponent);
 
-	// Bind our control axis' to callback functions
-	PlayerInputComponent->BindAxis("Thrust", this, &AWingedAnimal::ThrustInput);
-	PlayerInputComponent->BindAxis("MoveUp", this, &AWingedAnimal::MoveUpInput);
-	PlayerInputComponent->BindAxis("MoveRightFly", this, &AWingedAnimal::MoveRightInput);
-
+		// Bind our control axis' to callback functions
+		PlayerInputComponent->BindAxis("Thrust", this, &AWingedAnimal::ThrustInput);
+		PlayerInputComponent->BindAxis("MoveUp", this, &AWingedAnimal::MoveUpInput);
+		PlayerInputComponent->BindAxis("MoveRightFly", this, &AWingedAnimal::MoveRightInput);
 
 	//Talk Input Binding
 	PlayerInputComponent->BindAction("Talk", IE_Pressed, this, &AAnimalController::ToggleTalking);
@@ -51,7 +50,6 @@ void AWingedAnimal::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAction("Possess", IE_Pressed, this, &AAnimalController::Possess);
 
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 void AWingedAnimal::ThrustInput(float Val)
@@ -75,7 +73,7 @@ void AWingedAnimal::MoveUpInput(float Val)
 	TargetPitchSpeed += (FMath::Abs(CurrentYawSpeed) * -0.2f);
 
 	// Smoothly interpolate to target pitch speed
-	CurrentPitchSpeed = FMath::FInterpTo(CurrentPitchSpeed, TargetPitchSpeed, GetWorld()->GetDeltaSeconds(), 1.f);
+	CurrentPitchSpeed = FMath::FInterpTo(CurrentPitchSpeed, TargetPitchSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
 }
 
 void AWingedAnimal::MoveRightInput(float Val)

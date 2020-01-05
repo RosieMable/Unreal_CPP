@@ -9,6 +9,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Engine.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -49,6 +50,7 @@ AAnimalController::AAnimalController(const FObjectInitializer& ObjectInitializer
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
 
 
 #pragma region DialogueSystem
@@ -105,9 +107,10 @@ void AAnimalController::ToggleTalking()
 
 	if (bIsTalkingRange) {
 
+		ToggleUI();
 		//if we are in talking range, then we handle the talk status and the UI
 		bIsTalking = !bIsTalking;
-		ToggleUI();
+
 
 		if (GEngine)
 		{
@@ -115,14 +118,18 @@ void AAnimalController::ToggleTalking()
 			GEngine->AddOnScreenDebugMessage(myConst, 3.f, FColor::Cyan, ScrollingMessage);
 		}
 
-		if (bIsTalking && TalkingPawn) {
+		if (bIsTalking && TalkingPawn && TalkingPawn->shouldFacePlayer) {
 
 			//The talking pawn rotates to face the player
 			FVector Location = TalkingPawn->GetActorLocation();
 			FVector TargetLocation = GetActorLocation();
 
-			TalkingPawn->SetActorRotation((TargetLocation - Location).Rotation());
+			FVector NewActorRotation = FVector(Location.X, Location.Y, TargetLocation.Z - Location.Z);
+
+			TalkingPawn->SetActorRotation(NewActorRotation.Rotation());
 		}
+
+		TalkingPawn->hasInteracted = true;
 	}
 
 }
@@ -132,7 +139,7 @@ FDialogue* AAnimalController::RetrieveDialogue(UDataTable* TableToSearch, FName 
 	//If the table is not valid...
 	if(!TableToSearch) return nullptr;
 
-	//If the table is valid, then retrieve the fiven row if possible
+	//If the table is valid, then retrieve the given row if possible
 	FString ContextString;
 	return TableToSearch->FindRow<FDialogue>(RowName, ContextString);
 }
@@ -202,7 +209,7 @@ void AAnimalController::Talk(FString Excerpt, TArray<FDialogueLines>& Lines)
 				//Tell the talking pawn to reply to our player after the specified time
 				TalkingPawn->AnswerWithDelay(It, LinesToDisplay, ToTalLinesTime);
 			}
-			else if (!ChosenDialogue->ShouldAIAnswer) ToggleTalking();
+			else if (ChosenDialogue->ShouldAIAnswer == false) ToggleTalking();
 			break;
 		}
 	}
@@ -257,7 +264,13 @@ void AAnimalController::Possess()
 				{
 					GetMesh()->SetMaterial(1, DefaultMaterialFur);
 				}
+				if (UnPossessedAnimation)
+				{
+					GetMesh()->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+					GetMesh()->PlayAnimation(UnPossessedAnimation, true);
+				}
 			}
+
 
 		}
 
@@ -293,16 +306,24 @@ void AAnimalController::Possess()
 				//Set the possession materials
 				if (PossessableCharacter->PossessMaterialBody)
 				{
+					PossessMaterialBody->ForceRecompileForRendering();
 					PossessableCharacter->GetMesh()->SetMaterial(0, PossessableCharacter->PossessMaterialBody);
+
 				}
 
 				if (PossessableCharacter->PossessMaterialFur)
 				{
+					PossessMaterialBody->ForceRecompileForRendering();
 					PossessableCharacter->GetMesh()->SetMaterial(1, PossessableCharacter->PossessMaterialFur);
 				}
 
 				// ensure the new player is correctly marked as possesed and can be interacted with
 				PossessableCharacter->bIsCurrentlyPossessed = true;
+
+				if (PossessableCharacter->bIsCurrentlyPossessed)
+				{
+					PossessableCharacter->GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
+				}
 			}
 		}
 
@@ -322,6 +343,20 @@ void AAnimalController::Possess()
 			Log(ELogLevel::WARNING, "Nothing was hit");
 			// start to end, purple, will lines always stay on, depth priority, thickness of line
 			DrawDebugLine(GetWorld(), Start, End, FColor::Purple, false, 5.f, ECC_WorldStatic, 1.f);
+		}
+	}
+}
+
+void AAnimalController::BeginPlay()
+{
+	Super::BeginPlay(); 
+
+	if (!bIsCurrentlyPossessed) 
+	{
+		if (UnPossessedAnimation)
+		{
+			GetMesh()->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+			GetMesh()->PlayAnimation(UnPossessedAnimation, true);
 		}
 	}
 }

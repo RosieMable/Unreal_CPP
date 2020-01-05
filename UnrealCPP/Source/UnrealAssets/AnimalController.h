@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "DialogUI.h"
 #include "DialogueNPCCharacter.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "AnimalController.generated.h"
 
 
@@ -47,6 +48,9 @@ class AAnimalController : public ACharacter
 		class UMaterialInterface* PossessMaterialBody;
 	UPROPERTY(EditDefaultsOnly, Category = Possession)
 		class UMaterialInterface* PossessMaterialFur;
+
+	UPROPERTY(EditDefaultsOnly, Category = Possession)
+		class UAnimationAsset* UnPossessedAnimation;
 
 
 public:
@@ -170,6 +174,9 @@ public:
 
 	UFUNCTION()
 		void Possess(); //Used to possess a character
+
+	UFUNCTION()
+		void BeginPlay();
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = RayCast)
 		float LineTraceDistance;

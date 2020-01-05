@@ -49,6 +49,12 @@ public:
 	//Retrieves the corresponding character lines
 	UDataTable* GetPlayerLines() { return PlayerLines;  }
 
+	UPROPERTY(EditAnywhere, Category = DialogueSystem)
+		bool shouldFacePlayer;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = DialogueSystem)
+		bool hasInteracted;
+
 protected:
 
 	//If the player is inside this box component he will be able to initiate a conversation with the pawn
@@ -66,4 +72,10 @@ protected:
 	//The AI/pawn lines
 	UPROPERTY(EditAnywhere, Category = DialogueSystem)
 		UDataTable* AILines;
+
+	UPROPERTY(EditAnywhere, Category = Capsule)
+		float capsuleHeight;
+
+	UPROPERTY(EditAnywhere, Category = Capsule)
+		float capsuleWidth;
 };

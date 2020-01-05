@@ -19,12 +19,14 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 	UNREALASSETS_API UClass* Z_Construct_UClass_AAnimalController_NoRegister();
 	UNREALASSETS_API UClass* Z_Construct_UClass_AAnimalController();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
+	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_BeginPlay();
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_Possess();
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_Talk();
 	UNREALASSETS_API UScriptStruct* Z_Construct_UScriptStruct_FDialogueLines();
 	UNREALASSETS_API UFunction* Z_Construct_UFunction_AAnimalController_ToggleUI();
 	UNREALASSETS_API UClass* Z_Construct_UClass_UDialogUI_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UAudioComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UAnimationAsset_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
@@ -160,10 +162,35 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 	{
 		UClass* Class = AAnimalController::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "BeginPlay", &AAnimalController::execBeginPlay },
 			{ "Possess", &AAnimalController::execPossess },
 			{ "Talk", &AAnimalController::execTalk },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AAnimalController_BeginPlay_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAnimalController_BeginPlay_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Used to possess a character\n" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+		{ "ToolTip", "Used to possess a character" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AAnimalController_BeginPlay_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AAnimalController, nullptr, "BeginPlay", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AAnimalController_BeginPlay_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AAnimalController_BeginPlay_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AAnimalController_BeginPlay()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AAnimalController_BeginPlay_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AAnimalController_Possess_Statics
 	{
@@ -295,6 +322,10 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_BaseTurnRate;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_UnPossessedAnimation_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_UnPossessedAnimation;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PossessMaterialFur_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PossessMaterialFur;
@@ -327,6 +358,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_UnrealAssets,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AAnimalController_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AAnimalController_BeginPlay, "BeginPlay" }, // 1583975422
 		{ &Z_Construct_UFunction_AAnimalController_Possess, "Possess" }, // 3439924052
 		{ &Z_Construct_UFunction_AAnimalController_Talk, "Talk" }, // 1079395289
 		{ &Z_Construct_UFunction_AAnimalController_ToggleUI, "ToggleUI" }, // 1258022637
@@ -369,9 +401,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance_MetaData[] = {
 		{ "Category", "RayCast" },
-		{ "Comment", "//Used to possess a character\n" },
 		{ "ModuleRelativePath", "AnimalController.h" },
-		{ "ToolTip", "Used to possess a character" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance = { "LineTraceDistance", nullptr, (EPropertyFlags)0x0010000000010015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, LineTraceDistance), METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_LineTraceDistance_MetaData)) };
@@ -403,6 +433,13 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate = { "BaseTurnRate", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, BaseTurnRate), METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_UnPossessedAnimation_MetaData[] = {
+		{ "Category", "Possession" },
+		{ "ModuleRelativePath", "AnimalController.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAnimalController_Statics::NewProp_UnPossessedAnimation = { "UnPossessedAnimation", nullptr, (EPropertyFlags)0x0040000000010001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAnimalController, UnPossessedAnimation), Z_Construct_UClass_UAnimationAsset_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAnimalController_Statics::NewProp_UnPossessedAnimation_MetaData, ARRAY_COUNT(Z_Construct_UClass_AAnimalController_Statics::NewProp_UnPossessedAnimation_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur_MetaData[] = {
 		{ "Category", "Possession" },
@@ -464,6 +501,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_Questions_Inner,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseLookUpRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_BaseTurnRate,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_UnPossessedAnimation,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialFur,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_PossessMaterialBody,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAnimalController_Statics::NewProp_DefaultMaterialFur,
@@ -498,7 +536,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimalController() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAnimalController, 2044016542);
+	IMPLEMENT_CLASS(AAnimalController, 1144729830);
 	template<> UNREALASSETS_API UClass* StaticClass<AAnimalController>()
 	{
 		return AAnimalController::StaticClass();
