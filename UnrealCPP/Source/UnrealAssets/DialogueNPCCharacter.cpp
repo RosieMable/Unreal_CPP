@@ -47,10 +47,12 @@ void ADialogueNPCCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 }
 
-void ADialogueNPCCharacter::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void ADialogueNPCCharacter::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
+	OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (OtherActor->IsA<AAnimalController>())
+	if (OtherActor->IsA<AAnimalController>()) //if the other actore is of the class animal controller
 	{
+		//assignes the variables and calls the functions to set up the dialogue system
 		AAnimalController* Char = Cast<AAnimalController>(OtherActor);
 		Char->SetTalkRangeStatus(true);
 		Char->GeneratePlayerLines(*PlayerLines);
@@ -58,10 +60,12 @@ void ADialogueNPCCharacter::OnOverlapBegin(class UPrimitiveComponent* Overlapped
 	}
 }
 
-void ADialogueNPCCharacter::OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void ADialogueNPCCharacter::OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, 
+	class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (OtherActor->IsA<AAnimalController>())
 	{
+		//unassign the variables
 		AAnimalController* Char = Cast<AAnimalController>(OtherActor);
 		Char->SetTalkRangeStatus(false);
 		Char->SetTalkingPawn(nullptr);
